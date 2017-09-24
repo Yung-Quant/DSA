@@ -5,7 +5,7 @@ class TNode:
 		self.right = None
 		self.data = data
 
-class Tree:
+class BST:
 
 	def __init__(self):
 		self.root = None
@@ -35,3 +35,46 @@ class Tree:
 					if(current is None):
 						parent.right = new_node
 						return
+
+	def search(self, sNode):
+
+		current = self.root
+		#check root
+		if current is None:
+			return None
+
+		else:
+
+			while current is not None and current.data != sNode.data:
+				#move left
+				if current.data  > sNode.data:
+					current = current.left
+				#move right
+				else:
+					current = current.right
+
+		return current
+
+	def IOTrav(self, node):
+		if node is None:
+			return
+		self.IOTrav(node.left)#recur left 
+		print(node.data)
+		self.IOTrav(node.right)#recur right
+
+	def PoOTrav(self, node):
+		if node is None:
+			return
+		self.PoOTrav(node.left)#recur left
+		self.PoOTrav(node.right)#recur right
+		print(node.data)
+
+	def PreOTrav(self, node):
+		if node is None:
+			return
+
+		print(node.data)
+		self.PreOTrav(node.left) #recur left
+		self.PreOTrav(node.right) #recur right
+
+
